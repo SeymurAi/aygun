@@ -1,0 +1,407 @@
+
+<!DOCTYPE html>
+<html lang="az">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Aygün ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+
+            background:
+                radial-gradient(
+                    ellipse at 50% 20%,
+                    rgba(255, 195, 125, 0.20),
+                    transparent 55%
+                ),
+                linear-gradient(
+                    180deg,
+                    #171412,
+                    #090909 60%,
+                    #11100f
+                );
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        /* Lampa işığı */
+
+        .lamp-light {
+            position: fixed;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 650px;
+            height: 700px;
+
+            background: radial-gradient(
+                ellipse,
+                rgba(255, 190, 110, 0.20),
+                rgba(255, 180, 100, 0.06) 40%,
+                transparent 72%
+            );
+
+            pointer-events: none;
+        }
+
+        .wall-light {
+            position: fixed;
+            inset: 0;
+
+            background: radial-gradient(
+                ellipse at 50% 35%,
+                rgba(255, 210, 150, 0.08),
+                transparent 65%
+            );
+
+            pointer-events: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 650px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            padding: 20px 0;
+        }
+
+        /* Şəkil çərçivəsi */
+
+        .photo-frame {
+            display: inline-block;
+            padding: 12px;
+
+            background: linear-gradient(
+                135deg,
+                #d5b58a,
+                #806442,
+                #d9bd91,
+                #6c5235
+            );
+
+            border: 1px solid #b89b70;
+
+            box-shadow:
+                0 0 25px rgba(255, 190, 110, 0.15),
+                0 15px 40px rgba(0, 0, 0, 0.8);
+
+            margin-bottom: 35px;
+            transition: 0.5s;
+        }
+
+        .photo-frame img {
+            display: block;
+
+            width: auto;
+            height: auto;
+
+            max-width: min(390px, 75vw);
+            max-height: 40vh;
+
+            object-fit: contain;
+
+            background: #171412;
+            border: 2px solid #33291f;
+
+            transition: opacity 0.4s;
+        }
+
+        /* Başlıq */
+
+        h1 {
+            font-size: clamp(30px, 6vw, 48px);
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #f5e9dc;
+
+            text-shadow: 0 0 20px rgba(255, 200, 140, 0.3);
+
+            margin-bottom: 35px;
+        }
+
+        /* Düymələr */
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            min-height: 65px;
+        }
+
+        button {
+            padding: 16px 23px;
+            border-radius: 5px;
+            border: 1px solid rgba(255,255,255,0.3);
+
+            font-size: 15px;
+            font-weight: 600;
+
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        #tea, #coffee {
+            color: #f1e7dc;
+            background: rgba(255,255,255,0.07);
+            backdrop-filter: blur(10px);
+        }
+
+        #lipgloss {
+            background: #9e263c;
+            color: white;
+            border: 1px solid #c75b70;
+
+            box-shadow: 0 0 20px rgba(180, 40, 65, 0.25);
+        }
+
+        #lipgloss:hover {
+            background: #bd334e;
+            transform: translateY(-3px);
+        }
+
+        /* Son mesaj */
+
+        #message {
+            display: none;
+            margin-top: 30px;
+            animation: appear 1s ease forwards;
+        }
+
+        #message h2 {
+            color: #f4e6dc;
+            font-size: clamp(25px, 5vw, 38px);
+            font-weight: 600;
+            line-height: 1.5;
+            text-shadow: 0 0 20px rgba(200, 50, 70, 0.4);
+        }
+
+        #message span {
+            color: #e63950;
+            font-size: 38px;
+        }
+
+        /* Ürəklər */
+
+        .heart {
+            position: fixed;
+            bottom: -40px;
+            z-index: 5;
+            pointer-events: none;
+
+            animation: floatUp 5s linear forwards;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatUp {
+            to {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Telefon ekranları */
+
+        @media (max-width: 500px) {
+
+            .photo-frame {
+                margin-bottom: 28px;
+            }
+
+            .photo-frame img {
+                max-width: 75vw;
+                max-height: 32vh;
+            }
+
+            h1 {
+                margin-bottom: 30px;
+            }
+
+            .buttons {
+                gap: 9px;
+                flex-wrap: wrap;
+            }
+
+            button {
+                padding: 14px 15px;
+                font-size: 13px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="lamp-light"></div>
+    <div class="wall-light"></div>
+
+    <main class="container">
+
+        <!-- İlk görünəcək şəkil -->
+
+        <div class="photo-frame">
+            <img
+                id="couplePhoto"
+                src="images/seymur%20avtobus.jpeg"
+                alt="Bizim şəklimiz"
+            >
+        </div>
+
+        <!-- Əsas başlıq -->
+
+        <h1>AYGÜN, ÜŞÜYÜRƏM!! 🥶</h1>
+
+        <!-- Seçimlər -->
+
+        <div class="buttons">
+
+            <button id="tea">
+                İsti çay ☕
+            </button>
+
+            <button id="coffee">
+                Kofe
+            </button>
+
+            <button id="lipgloss">
+                Lipgloss 💄
+            </button>
+
+        </div>
+
+        <!-- Lipgloss seçildikdən sonra -->
+
+        <div id="message">
+
+            <h2>
+                Bilirdim bunu seçəcəksən, djanım
+                <span>❤️</span>
+            </h2>
+
+        </div>
+
+    </main>
+
+    <script>
+
+        const tea = document.getElementById("tea");
+        const coffee = document.getElementById("coffee");
+        const lipgloss = document.getElementById("lipgloss");
+
+        // Çay və kofe düymələrinin qaçması
+
+        function runAway(button) {
+
+            const maxX = window.innerWidth - button.offsetWidth - 20;
+            const maxY = window.innerHeight - button.offsetHeight - 20;
+
+            const randomX = Math.random() * Math.max(0, maxX);
+            const randomY = Math.random() * Math.max(0, maxY);
+
+            button.style.position = "fixed";
+            button.style.left = randomX + "px";
+            button.style.top = randomY + "px";
+            button.style.zIndex = "10";
+        }
+
+        [tea, coffee].forEach(button => {
+
+            button.addEventListener("mouseenter", () => {
+                runAway(button);
+            });
+
+            button.addEventListener("touchstart", (event) => {
+                event.preventDefault();
+                runAway(button);
+            });
+
+            button.addEventListener("click", () => {
+                runAway(button);
+            });
+
+        });
+
+        // Lipgloss düyməsinə basıldıqda
+
+        lipgloss.addEventListener("click", () => {
+
+            const photo = document.getElementById("couplePhoto");
+
+            // Əvvəlki şəkli göstər
+            photo.src = "images/luv.jpeg";
+
+            // Başlığı və seçimləri gizlət
+            document.querySelector("h1").style.display = "none";
+            document.querySelector(".buttons").style.display = "none";
+
+            // Yeni mesajı göstər
+            document.getElementById("message").style.display = "block";
+
+            // Ürəklər yarat
+            for (let i = 0; i < 60; i++) {
+                createHeart();
+            }
+
+        });
+
+        // Ürək animasiyası
+
+        function createHeart() {
+
+            const heart = document.createElement("div");
+
+            const emojis = ["❤️", "💗", "💕", "💖", "💋"];
+
+            heart.className = "heart";
+
+            heart.innerHTML =
+                emojis[Math.floor(Math.random() * emojis.length)];
+
+            heart.style.left = Math.random() * 100 + "vw";
+
+            heart.style.fontSize =
+                (15 + Math.random() * 25) + "px";
+
+            heart.style.animationDuration =
+                (3 + Math.random() * 4) + "s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 7000);
+
+        }
+
+    </script>
+
+</body>
+</html>
